@@ -171,26 +171,16 @@ void myPushCallback(ParseClient client, int error, const char *buffer) {
 }
 
 int main(int argc, const char *argv[]) {
-  const char* APPLICATION_ID = "e9bvTXGQNrzh7dxbW78R2VDd9LSaZKUZ7XXXXXXX";
-  const char* CLIENT_KEY = "8djNp1o4HC7Gy4L6Zc2FJKBBwNlyLL5mrXXXXXXX";
-  const char* CHANNELS = "[\"CHANNEL_A\",\"CHANNEL_B\"]";
-  if (argc != 2 && argc != 3 && argc != 5) {
-    printf("Usage: %s loginId [channels] [applicationId apiKey]\n", argv[0]);
-    printf("Sample: %s tony.liu '[\"channelA\",\"channelB\",\"channelC\"]', e9bvTXGQNrzh7dxbW78R2VDd9LSaZKUZ7XXXXXXX, 8djNp1o4HC7Gy4L6Zc2FJKBBwNlyLL5mrXXXXXXX\n", argv[0]);
+  if (argc != 5) {
+    printf("Usage: %s loginId channels applicationId apiKey\n", argv[0]);
+    printf("Sample: %s tony.liu '[\"channelA\",\"channelB\",\"channelC\"]' e9bvTXGQNrzh7dxbW78R2VDd9LSaZKUZ7XXXXXXX 8djNp1o4HC7Gy4L6Zc2FJKBBwNlyLL5mrXXXXXXX\n", argv[0]);
     return 1;
   }
   const char* loginId = argv[1];
-  if (argc >= 3) {
-    CHANNELS = argv[2];
-  }
-  if (argc >= 5) {
-    APPLICATION_ID = argv[3];
-    CLIENT_KEY = argv[4];
-  }
-  // ParseDemo
-  // printf("APPLICATION_ID: %s\n", APPLICATION_ID);
-  // printf("CLIENT_KEY: %s\n", CLIENT_KEY);
-  // printf("CHANNELS: %s\n", CHANNELS);
+  const char* CHANNELS = argv[2];
+  const char* APPLICATION_ID = argv[3];
+  const char* CLIENT_KEY = argv[4];
+
   ParseClient client = parseInitialize(APPLICATION_ID, CLIENT_KEY);
   char message[1024];
   sprintf(message, "figlet -c -f speed Welcome %s", loginId);
