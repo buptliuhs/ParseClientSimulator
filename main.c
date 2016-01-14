@@ -186,12 +186,12 @@ int main(int argc, const char *argv[]) {
   sprintf(message, "figlet -c Welcome %s", loginId);
   system(message);
 
-  updateInstallation(client, loginId, CHANNELS);
   parseSetPushCallback(client, myPushCallback);
   int result = parseStartPushService(client);
   if (result != 0)
     printf("Result: %d\n", result);
 
+  updateInstallation(client, loginId, CHANNELS);
   parseRunPushLoop(client);
 
   return 0;
