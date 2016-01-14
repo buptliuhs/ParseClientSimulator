@@ -1,0 +1,20 @@
+CC = gcc
+SRCS = main.c json.c
+OBJS = $(SRCS:.c=.o)
+INCLUDES = -I./include
+LIBDIRS = -L./lib
+LIBS = -lparse -lcrypto -lcurl -luuid -lm
+CFLAGS = -Wall
+TARGET = login
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(LIBDIRS) $(OBJS) -o $(TARGET) $(LIBS)
+
+.c.o:
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+clean:
+	rm -fR $(TARGET) $(OBJS)
+

@@ -148,9 +148,9 @@ void myRequestCallback(ParseClient client, int error, int httpStatus, const char
 
 void updateInstallation(ParseClient client, const char *loginId, const char *channels) {
   const char* installationId = parseGetInstallationId(client);
-  char sha[65];
+  char sha[65] = "";
   sha256(loginId, sha);
-  char data[1024];
+  char data[1024] = "";
   sprintf(data, "{\"installationId\": \"%s\", \"deviceType\": \"embedded\", \"deliveryId\": \"%s\", \"channels\": %s}", installationId, sha, channels);
   printf("*************************************\n");
   printf("Update installation\n");
@@ -183,7 +183,7 @@ int main(int argc, const char *argv[]) {
 
   ParseClient client = parseInitialize(APPLICATION_ID, CLIENT_KEY);
   char message[1024];
-  sprintf(message, "figlet -c -f speed Welcome %s", loginId);
+  sprintf(message, "figlet -c Welcome %s", loginId);
   system(message);
 
   updateInstallation(client, loginId, CHANNELS);
