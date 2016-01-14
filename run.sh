@@ -12,9 +12,9 @@ elif [ "$unamestr" = 'Darwin' ]; then
 fi
 
 if [ $platform = 'linux' ]; then
-  export LD_LIBRARY_PATH=$DIR/lib:$LD_LIBRARY_PATH
+  export LD_LIBRARY_PATH=$DIR/lib/linux:$LD_LIBRARY_PATH
 elif [ $platform = 'osx' ]; then
-  export DYLD_LIBRARY_PATH=$DIR/lib:$DYLD_LIBRARY_PATH
+  export DYLD_LIBRARY_PATH=$DIR/lib/osx:$DYLD_LIBRARY_PATH
 else
   echo "Could not determine the OS type"
   exit 1

@@ -2,7 +2,7 @@ CC = gcc
 SRCS = main.c json.c
 OBJS = $(SRCS:.c=.o)
 INCLUDES = -I./include
-LIBDIRS = -L./lib
+LIBDIRS = -L./lib/linux
 LIBS = -lparse -lcrypto -lcurl -luuid -lm
 CFLAGS = -Wall
 TARGET = login
